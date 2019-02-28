@@ -63,9 +63,10 @@ date = '-2.10.3001'
 #
 # Вход: 11
 # Выход: 5 3
-#Возможно есть более элегантное решение, нужно время еще подумать....
+# Возможно есть более элегантное решение, нужно время еще подумать....
 
-n = 31
+n = 18
+
 num = 0
 x = 0
 floor = 0
@@ -73,16 +74,14 @@ floor = 0
 for i in range(1, n):
 
     if num + pow(i, 2) > n:
-        for dy in range(0, i):
-            is_found = False
+        dy = int((n - num) / i + floor )
+        dx = (n - num) % i
+        if dx==0 :
+            dx=i
+        else:
+            dy+=1
 
-            for dx in range(1, i + 1):
-                if num + dy * i + dx == n:
-                    print(dy + floor + 1, dx)
-                    is_found=True
-                    break
-            if is_found:
-                break
+        print(dy, dx)        
         break
     num += pow(i, 2)
     floor += i
