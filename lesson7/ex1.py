@@ -44,3 +44,51 @@
 Подсказка: для работы с псевдослучайными числами удобно использовать
 модуль random: http://docs.python.org/3/library/random.html
 """
+
+import random
+
+
+class Card:
+
+    def __init__(self):
+        self.__values = []
+        while len(self.__values) < 15:
+            n = random.randint(1, 99)
+            if n not in self.__values:
+                self.__values.append(n)
+
+        self.__values.sort()
+
+    def show(self):
+        print(self.__values)
+        print(len(self.__values))
+
+    def check(self, number):
+        if number in self.__values:
+            self.__values.remove(number)
+            return True
+        else:
+            return False
+
+    def check_all(self):
+        return len(self.__values) == 0
+
+
+class Box():
+
+    i=0;
+
+    def __init__(self):
+        self.__numbers = [i for i in range(1, 100)]
+        random.shuffle(self.__numbers)
+        print(self.__numbers)
+        print(len(self.__numbers))
+
+    def next(self):
+        if i>0:
+            return self.__numbers[len(self.__numbers)-1]
+
+
+card = Card()
+card.show()
+box= Box()
